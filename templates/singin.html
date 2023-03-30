@@ -83,7 +83,7 @@ xmlns:xlink="http://www.w3.org/1999/xlink" style="position: absolute">
                   </svg>
          </label>
 <!--        <input class="user-input" type="text" name="name" id="name" placeholder="My name is"  />-->
-           {{ form.email(class="user-input", type="email", id="name", placeholder="My name is") }}<br>
+           {{ form.email(class="user-input", type="text", id="name", placeholder="My name is") }}<br>
             {% for error in form.email.errors %}
                 <div class="alert alert-danger" role="alert">
                     {{ error }}
@@ -99,7 +99,7 @@ xmlns:xlink="http://www.w3.org/1999/xlink" style="position: absolute">
             </svg>  
         </label>
 <!--        <input type="password" name="name" id="name" placeholder="Password" />-->
-        {{ form.password(type="password", id="name" placeholder="Password") }}<br>
+        {{ form.password(type="password", id="name", placeholder="Password") }}<br>
             {% for error in form.password.errors %}
                 <div class="alert alert-danger" role="alert">
                     {{ error }}
@@ -111,7 +111,10 @@ xmlns:xlink="http://www.w3.org/1999/xlink" style="position: absolute">
          {{ form.submit(type="submit", class="btn btn-primary", value="Sign in") }}
     </div>
       <p>{{ form.remember_me() }} {{ form.remember_me.label }}</p>
-        <div>{{ message }}</div>
+
+      <div style="alert alert-danger">
+          {{ message }}
+      </div>
 
       <a class="forgot-label" href="lost_pass.html">Lost your password?</a>
       <div class="clear"></div>
