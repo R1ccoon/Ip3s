@@ -1,0 +1,204 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto:400,300,500");
+*, *:after, *:before {
+  box-sizing: border-box;
+}
+
+html, body {
+  background: url(../img/bg.gif);
+  font-family: 'Roboto', sans-serif;
+}
+
+.clear {
+  clear: both;
+}
+
+#man-people-user, #lock-locker, #email {
+  fill: rgb(255, 255, 255);
+}
+
+.wrapper {
+  width: 300px;
+  margin: 12% auto;
+}
+
+form {
+  position: relative;
+}
+
+.clear {
+  clear: both;
+}
+
+.sign-in {
+  float: left;
+  color: rgb(255, 255, 255);
+  font-size: 1.3em;
+}
+.registred {
+  color: rgb(255, 255, 255);
+  font-size: 1.3em;
+  text-align: center;
+}
+.button {
+  float: right;
+  color: #b3b3b4;
+  border: 1px solid #2d4d33;
+  padding: 7px 15px;
+  border-radius: 3px;
+  font-size: 0.8em;
+  cursor: pointer;
+}
+
+.button:hover {
+  color: #ffffff;
+}
+
+.lock {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  margin-top: 10px;
+  padding: 7px;
+  left: 5px;
+}
+.lock::after {
+  content: "";
+  width: 1px;
+  height: 30px;
+  position: absolute;
+  background: #22272d;
+  top: 0px;
+  left: 100%;
+}
+
+.user {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  margin-top: 10px;
+  padding: 7px;
+  left: 5px;
+}
+.user::after {
+  content: "";
+  width: 1px;
+  height: 30px;
+  position: absolute;
+  background: #22272d;
+  top: 0px;
+  left: 100%;
+}
+
+input {
+  width: 100%;
+  padding: 5px;
+  height: 40px;
+  border-radius: 3px;
+  margin: 5px 0;
+  outline: none;
+}
+
+input[type="text"]:focus, input[type="password"]:focus {
+  border: 1px solid white;
+  box-shadow: none;
+}
+
+.user-input:focus .user {
+  background: white !important;
+}
+
+input[type="text"] {
+  background: transparent;
+  border: 2px solid #2d4d33;
+  padding-left: 45px;
+  color: #209b20;
+}
+
+input[type="password"] {
+  background: transparent;
+  border: 2px solid #2d4d33;
+  padding-left: 45px;
+  color: #209b20;
+}
+
+input[type="submit"] {
+  background: #209b20;
+  border: none;
+  color: rgb(255, 255, 255);
+  text-align: center;
+  font-size: 0.8em;
+  cursor: pointer;
+}
+
+input[type="radio"] {
+  display: none;
+}
+
+.radio-check {
+  width: 50px;
+  height: 20px;
+  border: 1px solid #2d4d33;
+  border-radius: 30px;
+  margin-top: 10px;
+  float: left;
+  text-align: center;
+  padding: 4px 0;
+  color: #209b20;
+  font-size: 0.65em;
+  position: relative;
+}
+.radio-check label {
+  margin: 0 2px;
+  cursor: pointer;
+}
+.radio-check .switch-selection {
+  display: block;
+  position: absolute;
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  background: #babbbd;
+  margin-top: -11px;
+  margin-left: 11px;
+  -webkit-transition: 0.2s ease-out;
+  transition: 0.2s ease-out;
+}
+
+.radio-yes:checked ~ .switch-selection {
+  margin-left: 25px !important;
+}
+
+.check-label {
+  font-size: 0.8em;
+  color: #b3b3b4;
+  margin-top: 10px;
+  float: left;
+  padding: 3px 0;
+  margin-left: 10px;
+}
+
+.forgot-label {
+  font-size: 0.8em;
+  color: #b3b3b4;
+  margin-top: 10px;
+  float: right;
+  padding: 3px 0;
+  cursor: pointer;
+}
+.forgot-label:hover {
+  color: #ffffff;
+}
+
+.back{
+  margin: 0 0 0 130px;
+  text-align: center;
+  font-size: 0.8em;
+  color: #b3b3b4;
+  margin-top: 10px;
+  float: left;
+  padding: 3px 0;
+  cursor: pointer
+}
+.back:hover {
+  color: #ffffff;
+}
