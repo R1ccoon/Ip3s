@@ -11,7 +11,6 @@ from data.news import News
 import datetime
 from flask_login import LoginManager, login_user, login_required, logout_user, current_user
 
-
 CSS_PATH = "{{ url_for('static', filename='css/')}}"
 JS_PATH = "{{ url_for('static', filename='js/')}}"
 IMG_PATH = "{{ url_for('static', filename='img/')}}"
@@ -55,6 +54,19 @@ def index():
     return render_template("index.html", news=news)
 
 
+@app.route("/shop")
+def shop():
+    db_sess = db_session.create_session()
+
+    if current_user.is_authenticated:
+        news = db_sess.query(News).filter(
+            (News.user == current_user) | (News.is_private != True))
+    else:
+        news = db_sess.query(News).filter(News.is_private != True)
+
+    return render_template("shop.html", news=news)
+
+
 @app.route('/register', methods=['GET', 'POST'])
 def reqister():
     form = RegisterForm()
@@ -95,7 +107,7 @@ def login():
     return render_template('singin.html', form=form)
 
 
-@app.route('/news',  methods=['GET', 'POST'])
+@app.route('/news', methods=['GET', 'POST'])
 @login_required
 def add_news():
     form = NewsForm()
@@ -145,11 +157,6 @@ def edit_news(id):
                            title='Редактирование новости',
                            form=form
                            )
-
-
-@app.route("/shop")
-def shop():
-    pass
 
 
 @app.route("/shop_single/<int:id>")
