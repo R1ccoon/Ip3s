@@ -51,7 +51,7 @@ def index():
     else:
         news = db_sess.query(News).filter(News.is_private != True)
 
-    return render_template("index.html", news=news)
+    return render_template("index.html", news=news, title='Home')
 
 
 @app.route("/shop")
@@ -64,7 +64,7 @@ def shop():
     else:
         news = db_sess.query(News).filter(News.is_private != True)
 
-    return render_template("shop.html", news=news)
+    return render_template("shop.html", news=news, title='Shop')
 
 
 @app.route('/register', methods=['GET', 'POST'])
@@ -164,9 +164,16 @@ def shop_single():
     pass
 
 
-@app.route("/contact")
+@app.route("/about")
+@login_required
 def contact():
-    pass
+    return render_template('about.html', title='About')
+
+
+@app.route("/contact")
+@login_required
+def cntct():
+    return render_template('contact.html', title='Contact')
 
 
 if __name__ == '__main__':
