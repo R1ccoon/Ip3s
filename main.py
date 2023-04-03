@@ -176,5 +176,19 @@ def cntct():
     return render_template('contact.html', title='Contact')
 
 
+@app.route("/cart")
+@login_required
+def cart():
+    db_sess = db_session.create_session()
+
+    if current_user.is_authenticated:
+        news = db_sess.query(News).filter(
+            (News.user == current_user) | (News.is_private != True))
+    else:
+        news = db_sess.query(News).filter(News.is_private != True)
+
+    return render_template('cart.html', news=news, title='cart')
+
+
 if __name__ == '__main__':
     main()
