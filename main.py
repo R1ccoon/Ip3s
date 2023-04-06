@@ -160,8 +160,11 @@ def edit_news(id):
 
 
 @app.route("/shop_single/<int:id>")
-def shop_single():
-    pass
+def shop_single(id):
+    db_sess = db_session.create_session()
+    news = db_sess.query(News).filter(News.id == id)
+
+    return render_template("shop-single.html", news=news)
 
 
 @app.route("/about")
