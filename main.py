@@ -54,15 +54,20 @@ def index():
     return render_template("index.html", news=news, title='Home')
 
 
-@app.route("/shop")
-def shop():
+@app.route("/shop/<string:filtr>")
+def shop(filtr):
+    s, s1 = filtr.split('_')
     db_sess = db_session.create_session()
+    if s == 'type':
+        news = db_sess.query(News).filter(News.type == s1)
 
-    if current_user.is_authenticated:
-        news = db_sess.query(News).filter(
-            (News.user == current_user) | (News.is_private != True))
-    else:
-        news = db_sess.query(News).filter(News.is_private != True)
+    return render_template("shop.html", news=news, title='Shop')
+
+
+@app.route("/shop")
+def shop1():
+    db_sess = db_session.create_session()
+    news = db_sess.query(News).filter()
 
     return render_template("shop.html", news=news, title='Shop')
 
