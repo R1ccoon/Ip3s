@@ -1,29 +1,133 @@
+
+<!--<h1>Добавление новости</h1>-->
+<!--<form action="" method="post">-->
+<!--    {{ form.hidden_tag() }}-->
+<!--    <p>-->
+<!--        {{ form.title.label }}<br>-->
+<!--        {{ form.title(class="form-control") }}<br>-->
+<!--        {% for error in form.title.errors %}-->
+<!--            <p class="alert alert-danger" role="alert">-->
+<!--                {{ error }}-->
+<!--            </p>-->
+<!--        {% endfor %}-->
+<!--    </p>-->
+<!--    <p>-->
+<!--        {{ form.content.label }}<br>-->
+<!--        {{ form.content(class="form-control") }}<br>-->
+<!--        {% for error in form.content.errors %}-->
+<!--            <p content="alert alert-danger" role="alert">-->
+<!--                {{ error }}-->
+<!--            </p>-->
+<!--        {% endfor %}-->
+<!--    </p>-->
+<!--    <p>{{ form.is_private() }} {{ form.is_private.label }}</p>-->
+<!--    <p>{{ form.submit(type="submit", class="btn btn-primary") }}</p>-->
+<!--    {{message}}-->
+<!--</form>-->
+
+
+
 {% extends "base.html" %}
 
 {% block content %}
-<h1>Добавление новости</h1>
-<form action="" method="post">
-    {{ form.hidden_tag() }}
-    <p>
-        {{ form.title.label }}<br>
-        {{ form.title(class="form-control") }}<br>
+
+    <style>
+            body {
+                font-family: Arial, sans-serif;
+            }
+
+            h1 {
+                text-align: center;
+                margin-top: 50px;
+            }
+
+            form {
+                margin: 0 auto;
+                width: 50%;
+                border: 1px solid #ccc;
+                padding: 20px;
+                border-radius: 10px;
+            }
+
+            label {
+                display: block;
+                margin-bottom: 10px;
+                font-weight: bold;
+            }
+
+            input[type="text"],
+            textarea,
+            select {
+                width: 100%;
+                padding: 10px;
+                border-radius: 5px;
+                border: 1px solid #ccc;
+                margin-bottom: 20px;
+                box-sizing: border-box;
+            }
+
+            input[type="number"] {
+                width: 100%;
+                padding: 10px;
+                border-radius: 5px;
+                border: 1px solid #ccc;
+                margin-bottom: 20px;
+                box-sizing: border-box;
+            }
+
+            input[type="file"] {
+                margin-bottom: 20px;
+            }
+
+            input[type="submit"] {
+                background-color: #4CAF50;
+                color: white;
+                padding: 10px 20px;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+            }
+
+            input[type="submit"]:hover {
+                background-color: #3e8e41;
+            }
+        </style>
+
+    <h1>Добавление нового товара</h1>
+    <form action="" method="post" enctype="multipart/form-data">
+        {{ form.title.label }}
+        {{ form.title(class="form-control", type="text") }}
         {% for error in form.title.errors %}
             <p class="alert alert-danger" role="alert">
                 {{ error }}
             </p>
         {% endfor %}
-    </p>
-    <p>
-        {{ form.content.label }}<br>
-        {{ form.content(class="form-control") }}<br>
-        {% for error in form.content.errors %}
+
+        {{ form.content.label }}
+        {{ form.content(class="form-control") }}
+        {% for error in form.content.errors %}-->
             <p content="alert alert-danger" role="alert">
                 {{ error }}
             </p>
         {% endfor %}
-    </p>
-    <p>{{ form.is_private() }} {{ form.is_private.label }}</p>
-    <p>{{ form.submit(type="submit", class="btn btn-primary") }}</p>
-    {{message}}
-</form>
+
+        {{ form.price.label }}
+        {{ form.price(class="form-control", min="0", step="1", type="number") }}
+        {% for error in form.price.errors %}
+            <p content="alert alert-danger" role="alert">
+                {{ error }}
+            </p>
+        {% endfor %}
+
+        {{ form.type_k.label }}
+        {{ form.type_k(class="form-control") }}
+
+
+        {{ form.image.label }}
+        {{ form.image(class="form-control", type="file", accept="image/*") }}
+
+        {{ form.submit(type="submit", class="btn btn-primary", value="Добавить товар") }}
+    </form>
+    <br>
+
 {% endblock %}
