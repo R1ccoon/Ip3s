@@ -2,7 +2,7 @@ from os import abort
 
 from flask import Flask, render_template, redirect, make_response, request, url_for
 
-from forms.news import NewsForm
+from forms.news import ProductForm
 from forms.user import RegisterForm, LoginForm
 
 from data import db_session
@@ -10,11 +10,6 @@ from data.users import User
 from data.news import News
 import datetime
 from flask_login import LoginManager, login_user, login_required, logout_user, current_user
-
-CSS_PATH = "{{ url_for('static', filename='css/')}}"
-JS_PATH = "{{ url_for('static', filename='js/')}}"
-IMG_PATH = "{{ url_for('static', filename='img/')}}"
-WEBFONT_PATH = "{{ url_for('static', filename='webfonts/')}}"
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = '40d1649f-0493-4b70-98ba-98533de7710b'
@@ -115,13 +110,17 @@ def login():
 @app.route('/news', methods=['GET', 'POST'])
 @login_required
 def add_news():
-    form = NewsForm()
-    if form.validate_on_submit():
+    form = ProductForm()
+
+    if request.method == "POST":
         db_sess = db_session.create_session()
         news = News()
         news.title = form.title.data
         news.content = form.content.data
-        news.is_private = form.is_private.data
+        news.price = form.price.data
+
+        news.type = form.type_k.data
+
         current_user.news.append(news)
         db_sess.merge(current_user)
         db_sess.commit()
@@ -133,7 +132,7 @@ def add_news():
 @app.route('/news/<int:id>', methods=['GET', 'POST'])
 @login_required
 def edit_news(id):
-    form = NewsForm()
+    form = ProductForm()
     if request.method == "GET":
         db_sess = db_session.create_session()
         news = db_sess.query(News).filter(News.id == id,
