@@ -49,23 +49,30 @@ def index():
     return render_template("index.html", news=news, title='Home')
 
 
+
 @app.route("/shop/<string:filtr>")
 def shop(filtr):
-    s, s1 = filtr.split('_')
+    m = filtr.split('.')
     db_sess = db_session.create_session()
-    if s == 'type':
-        news = db_sess.query(News).filter(News.type == s1)
-
-    return render_template("shop.html", news=news, title='Shop')
+    sl = ''
+    print(m)
+    for i in m:
+        print(i)
+        s, s1 = i.split('_')
+        sl += f" (News.{s} == '{s1}') &"
+    sl = sl[1:-2]
+    print(sl)
+    news = db_sess.query(News).filter(eval(sl))
+    href = filtr + '.'
+    return render_template("shop.html", news=news, title='Shop', hr=href)
 
 
 @app.route("/shop")
 def shop1():
     db_sess = db_session.create_session()
     news = db_sess.query(News).filter()
-
-    return render_template("shop.html", news=news, title='Shop')
-
+    href = '/shop/'
+    return render_template("shop.html", news=news, title='Shop', hr=href)
 
 @app.route('/register', methods=['GET', 'POST'])
 def reqister():
