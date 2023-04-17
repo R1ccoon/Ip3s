@@ -19,6 +19,8 @@ class User(SqlAlchemyBase, UserMixin):
                                      default=datetime.datetime.now)
     news = orm.relationship("News", back_populates='user')
 
+    cart = sqlalchemy.Column(sqlalchemy.String)
+
     def __repr__(self):
         return f'<User> {self.id} {self.name} {self.email}'
 

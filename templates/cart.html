@@ -9,9 +9,8 @@
 					<!-- Column Titles -->
 					<div class="cart_info_columns clearfix">
 						<div class="cart_info_col cart_info_col_product">Product</div>
-						<div class="cart_info_col cart_info_col_price">Price</div>
-						<div class="cart_info_col cart_info_col_quantity">Quantity</div>
-						<div class="cart_info_col cart_info_col_total">Total</div>
+
+						<div class="cart_info_col cart_info_col_total">Price</div>
 					</div>
 				</div>
 			</div>
@@ -30,21 +29,7 @@
 									<div class="cart_item_edit"><a href="#">{{ item.content }}</a></div>
 								</div>
 							</div>
-							<!-- Price -->
-							<div class="cart_item_price">{{ item.price }}$</div>
-							<!-- Quantity -->
-							<div class="cart_item_quantity">
-								<div class="product_quantity_container">
-									<div class="product_quantity clearfix">
-										<span>Qty</span>
-										<input id="quantity_input" type="text" pattern="[0-9]*" value="1">
-										<div class="quantity_buttons">
-											<div id="quantity_inc_button" class="quantity_inc quantity_control"><i class="fa fa-chevron-up" aria-hidden="true"></i></div>
-											<div id="quantity_dec_button" class="quantity_dec quantity_control"><i class="fa fa-chevron-down" aria-hidden="true"></i></div>
-										</div>
-									</div>
-								</div>
-							</div>
+
 							<!-- Total -->
 							<div class="cart_item_total">{{ item.price }}$</div>
 						</div>
@@ -57,36 +42,12 @@
 						<div class="button continue_shopping_button"><a href="#">Continue shopping</a></div>
 						<div class="cart_buttons_right ml-lg-auto">
 							<div class="button clear_cart_button"><a href="#">Clear cart</a></div>
-							<div class="button update_cart_button"><a href="#">Update cart</a></div>
 						</div>
 					</div>
 				</div>
 			</div>
 			<div class="row row_extra">
 				<div class="col-lg-4">
-					
-					<!-- Delivery -->
-					<div class="delivery">
-						<div class="section_title">Shipping method</div>
-						<div class="section_subtitle">Select the one you want</div>
-						<div class="delivery_options">
-							<label class="delivery_option clearfix">Next day delivery
-								<input type="radio" name="radio">
-								<span class="checkmark"></span>
-								<span class="delivery_price">$4.99</span>
-							</label>
-							<label class="delivery_option clearfix">Standard delivery
-								<input type="radio" name="radio">
-								<span class="checkmark"></span>
-								<span class="delivery_price">$1.99</span>
-							</label>
-							<label class="delivery_option clearfix">Personal pickup
-								<input type="radio" checked="checked" name="radio">
-								<span class="checkmark"></span>
-								<span class="delivery_price">Free</span>
-							</label>
-						</div>
-					</div>
 
 				</div>
 
