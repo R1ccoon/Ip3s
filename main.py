@@ -49,19 +49,18 @@ def index():
     return render_template("index.html", news=news, title='Home')
 
 
-
 @app.route("/shop/<string:filtr>")
 def shop(filtr):
     m = filtr.split('.')
     db_sess = db_session.create_session()
     sl = ''
-    print(m)
+
     for i in m:
         print(i)
         s, s1 = i.split('_')
         sl += f" (News.{s} == '{s1}') &"
     sl = sl[1:-2]
-    print(sl)
+
     news = db_sess.query(News).filter(eval(sl))
     href = filtr + '.'
     return render_template("shop.html", news=news, title='Shop', hr=href)
@@ -72,7 +71,14 @@ def shop1():
     db_sess = db_session.create_session()
     news = db_sess.query(News).filter()
     href = '/shop/'
-    return render_template("shop.html", news=news, title='Shop', hr=href)
+
+    product_type = []
+    for i in news:
+        if i.type.lower() not in product_type:
+            product_type.append(i.type)
+
+    return render_template("shop.html", news=news, title='Shop', hr=href, product_type=product_type)
+
 
 @app.route('/register', methods=['GET', 'POST'])
 def reqister():
@@ -105,6 +111,7 @@ def login():
     if request.method == "POST":
         db_sess = db_session.create_session()
         user = db_sess.query(User).filter(User.email == form.email.data).first()
+        USER_ID = user.id
         if user and user.check_password(form.password.data):
             login_user(user, remember=form.remember_me.data)
             return redirect("/")
@@ -114,9 +121,9 @@ def login():
     return render_template('singin.html', form=form)
 
 
-@app.route('/news', methods=['GET', 'POST'])
+@app.route('/product', methods=['GET', 'POST'])
 @login_required
-def add_news():
+def add_product():
     form = ProductForm()
 
     if request.method == "POST":
@@ -132,7 +139,7 @@ def add_news():
         db_sess.merge(current_user)
         db_sess.commit()
         return redirect('/')
-    return render_template('news.html', title='Добавление новости',
+    return render_template('product.html', title='Добавление новости',
                            form=form)
 
 
@@ -164,7 +171,7 @@ def edit_news(id):
             return redirect('/')
         else:
             abort(404)
-    return render_template('news.html',
+    return render_template('product.html',
                            title='Редактирование новости',
                            form=form
                            )
@@ -201,7 +208,14 @@ def cart():
     else:
         news = db_sess.query(News).filter(News.is_private != True)
 
-    return render_template('cart.html', news=news, title='cart')
+    user = db_sess.query(User).filter(User.id == current_user.id).first()
+    user_cart = [int(i) for i in user.cart.split(' ')]
+
+    user_product = []
+    for i in user_cart:
+        user_product.append(db_sess.query(News).filter(News.id == i).first())
+
+    return render_template('cart.html', news=user_product, title='cart')
 
 
 if __name__ == '__main__':
