@@ -57,14 +57,22 @@ def shop(filtr):
     m = filtr.split('.')
     db_sess = db_session.create_session()
     sl = ''
-
-    for i in m:
-        print(i)
-        s, s1 = i.split('_')
-        sl += f" (News.{s} == '{s1}') &"
-    sl = sl[1:-2]
-
-    news = db_sess.query(News).filter(eval(sl))
+    als = db_sess.query(News).filter()
+    for j in als:
+        k = 0
+        for i in m:
+            s, s1 = i.split('_')
+            b = eval(f'j.{s}')
+            if s1 not in b:
+                k = 1
+        if k == 0:
+            sl += f" (News.id == '{j.id}') |"
+    try:
+        sl = sl[1:-2]
+        print(sl, 1)
+        news = db_sess.query(News).filter(eval(sl))
+    except:
+        news = db_sess.query(News).filter(News.id == 'xz')
     href = filtr + '.'
     return render_template("shop.html", news=news, title='Shop', hr=href)
 
@@ -115,6 +123,8 @@ def reqister():
         user = User(
             name=form.name.data,
             email=form.email.data,
+            is_admin=0,
+            cart='',
         )
         user.set_password(form.password.data)
         db_sess.add(user)
@@ -229,7 +239,7 @@ def cart():
 
     user = db_sess.query(User).filter(User.id == current_user.id).first()
     if user.cart:
-        user_cart = [int(i) for i in user.cart.split(' ')]
+        user_cart = [int(i) for i in str(user.cart).split(' ')]
 
         user_product = []
         for i in user_cart:

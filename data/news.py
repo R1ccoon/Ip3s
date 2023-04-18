@@ -16,6 +16,8 @@ class News(SqlAlchemyBase):
                                      default=datetime.datetime.now)
     image = sqlalchemy.Column(sqlalchemy.String, nullable=True)
     type = sqlalchemy.Column(sqlalchemy.String, nullable=True)
+    color = sqlalchemy.Column(sqlalchemy.String, nullable=True)
+    size = price = sqlalchemy.Column(sqlalchemy.Integer, nullable=True)
     price = sqlalchemy.Column(sqlalchemy.Integer)
     user_id = sqlalchemy.Column(sqlalchemy.Integer,
                                 sqlalchemy.ForeignKey("users.id"))
