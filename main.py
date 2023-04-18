@@ -10,12 +10,15 @@ from data.users import User
 from data.news import News
 import datetime
 from flask_login import LoginManager, login_user, login_required, logout_user, current_user
+import sqlite3
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = '40d1649f-0493-4b70-98ba-98533de7710b'
 
 login_manager = LoginManager()
 login_manager.init_app(app)
+
+a = 0
 
 
 @login_manager.user_loader
@@ -66,18 +69,34 @@ def shop(filtr):
     return render_template("shop.html", news=news, title='Shop', hr=href)
 
 
+@app.route('/shop1/<int:movie_id>')
+def post(movie_id=None):
+    db_sess = db_session.create_session()
+    user = db_sess.query(User).filter(User.id == current_user.id).first()
+
+    con = sqlite3.connect('db/blogs.db')
+    cur = con.cursor()
+    cur.execute(
+        f"""UPDATE users SET cart="{user.cart} {movie_id}" WHERE id={current_user.id}""")
+    con.commit()
+    return redirect('/shop')
+
+
 @app.route("/shop")
 def shop1():
     db_sess = db_session.create_session()
     news = db_sess.query(News).filter()
+    user = db_sess.query(User).filter(User.id == current_user.id).first()
+
     href = '/shop/'
+    is_admin = user.is_admin
 
     product_type = []
     for i in news:
         if i.type.lower() not in product_type:
             product_type.append(i.type)
 
-    return render_template("shop.html", news=news, title='Shop', hr=href, product_type=product_type)
+    return render_template("shop.html", news=news, title='Shop', hr=href, product_type=product_type, is_admin=is_admin)
 
 
 @app.route('/register', methods=['GET', 'POST'])
@@ -111,7 +130,6 @@ def login():
     if request.method == "POST":
         db_sess = db_session.create_session()
         user = db_sess.query(User).filter(User.email == form.email.data).first()
-        USER_ID = user.id
         if user and user.check_password(form.password.data):
             login_user(user, remember=form.remember_me.data)
             return redirect("/")
@@ -124,23 +142,29 @@ def login():
 @app.route('/product', methods=['GET', 'POST'])
 @login_required
 def add_product():
+    db_sess = db_session.create_session()
     form = ProductForm()
+    user = db_sess.query(User).filter(User.id == current_user.id).first()
+    is_admin = user.is_admin
 
-    if request.method == "POST":
-        db_sess = db_session.create_session()
-        news = News()
-        news.title = form.title.data
-        news.content = form.content.data
-        news.price = form.price.data
+    if is_admin:
+        if request.method == "POST":
+            db_sess = db_session.create_session()
+            news = News()
+            news.title = form.title.data
+            news.content = form.content.data
+            news.price = form.price.data
 
-        news.type = form.type_k.data
+            news.type = form.type_k.data
 
-        current_user.news.append(news)
-        db_sess.merge(current_user)
-        db_sess.commit()
+            current_user.news.append(news)
+            db_sess.merge(current_user)
+            db_sess.commit()
+            return redirect('/shop')
+        return render_template('product.html', title='Добавление новости',
+                               form=form)
+    else:
         return redirect('/')
-    return render_template('product.html', title='Добавление новости',
-                           form=form)
 
 
 @app.route('/news/<int:id>', methods=['GET', 'POST'])
@@ -178,6 +202,7 @@ def edit_news(id):
 
 
 @app.route("/shop_single/<int:id>")
+@login_required
 def shop_single(id):
     db_sess = db_session.create_session()
     news = db_sess.query(News).filter(News.id == id)
@@ -202,20 +227,27 @@ def cntct():
 def cart():
     db_sess = db_session.create_session()
 
-    if current_user.is_authenticated:
-        news = db_sess.query(News).filter(
-            (News.user == current_user) | (News.is_private != True))
-    else:
-        news = db_sess.query(News).filter(News.is_private != True)
-
     user = db_sess.query(User).filter(User.id == current_user.id).first()
-    user_cart = [int(i) for i in user.cart.split(' ')]
+    if user.cart:
+        user_cart = [int(i) for i in user.cart.split(' ')]
 
-    user_product = []
-    for i in user_cart:
-        user_product.append(db_sess.query(News).filter(News.id == i).first())
+        user_product = []
+        for i in user_cart:
+            user_product.append(db_sess.query(News).filter(News.id == i).first())
+    else:
+        user_product = False
 
     return render_template('cart.html', news=user_product, title='cart')
+
+
+@app.route('/clear_cart')
+def clear_cart():
+    con = sqlite3.connect('db/blogs.db')
+    cur = con.cursor()
+    cur.execute(
+        f"""UPDATE users SET cart="" WHERE id={current_user.id}""")
+    con.commit()
+    return redirect('/cart')
 
 
 if __name__ == '__main__':
