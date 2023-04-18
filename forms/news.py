@@ -11,6 +11,6 @@ class ProductForm(FlaskForm):
     is_private = BooleanField("Личное")
     price = StringField('Цена')
     image = wtforms.FileField('Изображение')
-    type_k = wtforms.SelectField('Категория товара', choices=("Iphone", "Mac", "Ipad"))
+    type_k = wtforms.SelectField('Категория товара', choices=("Iphone", "Macbook"))
     submit = SubmitField('Применить')
     is_private = BooleanField("Личное")
