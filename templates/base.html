@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 
 <head>
     <title>Ip3s | {{ title }}</title>
@@ -89,12 +89,10 @@
                      {% if current_user.is_authenticated %}
                         <a class="nav-icon position-relative text-decoration-none" href="/cart">
                             <i class="fa fa-fw fa-cart-arrow-down text-dark mr-1"></i>
-                            <span class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark">7</span>
                         </a>
                         <a href="/logout" class="text-decoration-none user-cab" style="display: flex;">
-                            <div class="nav-icon position-relative text-decoration-none" href="#">
+                            <div class="nav-icon position-relative text-decoration-none">
                                 <i class="fa fa-fw fa-user text-dark mr-3"></i>
-                                <span class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark">+9</span>
                             </div>
                             <div href="#" class="text-decoration-none">{{ current_user.name }}</div>
                         </a>

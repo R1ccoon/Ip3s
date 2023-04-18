@@ -16,32 +16,36 @@
 			</div>
 			<div class="row cart_items_row">
 				<div class="col">
-					{% for item in news %}
-						<!-- Cart Item -->
-						<div class="cart_item d-flex flex-lg-row flex-column align-items-lg-center align-items-start justify-content-start">
-							<!-- Name -->
-							<div class="cart_item_product d-flex flex-row align-items-center justify-content-start">
-								<div class="cart_item_image">
-									<div><img src={{ item.image }} alt=""></div>
+					{% if news %}
+						{% for item in news %}
+							<!-- Cart Item -->
+							<div class="cart_item d-flex flex-lg-row flex-column align-items-lg-center align-items-start justify-content-start">
+								<!-- Name -->
+								<div class="cart_item_product d-flex flex-row align-items-center justify-content-start">
+									<div class="cart_item_image">
+										<div><img src={{ item.image }} alt=""></div>
+									</div>
+									<div class="cart_item_name_container">
+										<div class="cart_item_name"><a href="#">{{ item.title }}</a></div>
+										<div class="cart_item_edit"><a href="#">{{ item.content }}</a></div>
+									</div>
 								</div>
-								<div class="cart_item_name_container">
-									<div class="cart_item_name"><a href="#">{{ item.title }}</a></div>
-									<div class="cart_item_edit"><a href="#">{{ item.content }}</a></div>
-								</div>
-							</div>
 
-							<!-- Total -->
-							<div class="cart_item_total">{{ item.price }}$</div>
-						</div>
-					{% endfor %}
+								<!-- Total -->
+								<div class="cart_item_total">{{ item.price }}$</div>
+							</div>
+						{% endfor %}
+					{% else %}
+						Not tovar
+					{% endif %}
 				</div>
 			</div>
 			<div class="row row_cart_buttons">
 				<div class="col">
 					<div class="cart_buttons d-flex flex-lg-row flex-column align-items-start justify-content-start">
-						<div class="button continue_shopping_button"><a href="#">Continue shopping</a></div>
+						<div class="button continue_shopping_button"><a href="/shop">Continue shopping</a></div>
 						<div class="cart_buttons_right ml-lg-auto">
-							<div class="button clear_cart_button"><a href="#">Clear cart</a></div>
+							<div class="button clear_cart_button"><a href="/clear_cart">Clear cart</a></div>
 						</div>
 					</div>
 				</div>
