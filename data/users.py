@@ -18,7 +18,7 @@ class User(SqlAlchemyBase, UserMixin):
     created_date = sqlalchemy.Column(sqlalchemy.DateTime,
                                      default=datetime.datetime.now)
     news = orm.relationship("News", back_populates='user')
-
+    is_admin = sqlalchemy.Column(sqlalchemy.Boolean)
     cart = sqlalchemy.Column(sqlalchemy.String)
 
     def __repr__(self):
