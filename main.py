@@ -94,17 +94,27 @@ def post(movie_id=None):
 def shop1():
     db_sess = db_session.create_session()
     news = db_sess.query(News).filter()
-    user = db_sess.query(User).filter(User.id == current_user.id).first()
+    try:
+        user = db_sess.query(User).filter(User.id == current_user.id).first()
 
-    href = '/shop/'
-    is_admin = user.is_admin
+        href = '/shop/'
+        is_admin = user.is_admin
 
-    product_type = []
-    for i in news:
-        if i.type.lower() not in product_type:
-            product_type.append(i.type)
+        product_type = []
+        for i in news:
+            if i.type.lower() not in product_type:
+                product_type.append(i.type)
 
-    return render_template("shop.html", news=news, title='Shop', hr=href, product_type=product_type, is_admin=is_admin)
+        return render_template("shop.html", news=news, title='Shop', hr=href, product_type=product_type,
+                               is_admin=is_admin)
+    except:
+        product_type = []
+        href = '/shop/'
+        for i in news:
+            if i.type.lower() not in product_type:
+                product_type.append(i.type)
+        return render_template("shop.html", news=news, title='Shop', hr=href, product_type=product_type)
+
 
 
 @app.route('/register', methods=['GET', 'POST'])
