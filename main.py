@@ -2,7 +2,7 @@ from os import abort
 
 from flask import Flask, render_template, redirect, make_response, request, url_for
 
-from forms.news import ProductForm
+from forms.product import ProductForm
 from forms.user import RegisterForm, LoginForm
 
 from data import db_session
@@ -165,6 +165,12 @@ def add_product():
             news.content = form.content.data
             news.price = form.price.data
 
+            news.color = form.color.data
+            news.size = form.size.data
+
+            news.description = form.desc.data
+            news.spec = form.spec.data
+
             news.type = form.type_k.data
 
             current_user.news.append(news)
@@ -177,9 +183,9 @@ def add_product():
         return redirect('/')
 
 
-@app.route('/news/<int:id>', methods=['GET', 'POST'])
+@app.route('/product_edit/<int:id>', methods=['GET', 'POST'])
 @login_required
-def edit_news(id):
+def edit_product(id):
     form = ProductForm()
     if request.method == "GET":
         db_sess = db_session.create_session()
@@ -217,7 +223,7 @@ def shop_single(id):
     db_sess = db_session.create_session()
     news = db_sess.query(News).filter(News.id == id)
 
-    return render_template("shop-single.html", news=news)
+    return render_template("shop-single.html", news=news, title='Product')
 
 
 @app.route("/about")
