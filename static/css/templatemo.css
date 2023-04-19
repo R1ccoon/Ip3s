@@ -55,8 +55,8 @@ body, ul, li, p, a, label, input, div {
 .text-muted { color: #bcbcbc !important;}
 .text-success { color: #ffffff !important;}
 .text-light { color: #cfd6e1 !important;}
-.bg-dark { background-color: #0d130f !important;}
-.bg-light { background-color: #1d241f !important;}
+.bg-dark { background-color: #000000 !important;}
+.bg-light { background-color: #000000 !important;}
 .bg-black { background-color: #0d130f !important;}
 .bg-success { background-color: #59ab6e !important;}
 .btn-success {
@@ -180,7 +180,7 @@ body, ul, li, p, a, label, input, div {
 /* Large devices (desktops, 992px and up)*/
 @media (min-width: 992px) {
   #templatemo_main_nav .navbar-nav {max-width: 550px;}
-  #template-mo-zay-hero-carousel .carousel-item {min-height: 30rem !important; background-color: #1d241f;}
+  #template-mo-zay-hero-carousel .carousel-item {min-height: 30rem !important; background-color: #000000;}
   .product-wap .h3, .product-wap li, .product-wap i, .product-wap p {font-size: 18px !important;}
   .product-wap .product-color-dot {
     width: 12px;
