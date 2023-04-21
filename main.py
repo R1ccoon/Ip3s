@@ -1,6 +1,7 @@
 from os import abort
 
-from flask import Flask, render_template, redirect, make_response, request, url_for
+from flask import Flask, render_template, redirect, make_response, request, send_from_directory
+from flask_uploads import UploadSet, IMAGES, configure_uploads
 
 from forms.product import ProductForm
 from forms.user import RegisterForm, LoginForm
@@ -14,6 +15,10 @@ import sqlite3
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = '40d1649f-0493-4b70-98ba-98533de7710b'
+app.config['UPLOADED_PHOTOS_DEST'] = 'static/img'
+
+photos = UploadSet('photos', IMAGES)
+configure_uploads(app, photos)
 
 login_manager = LoginManager()
 login_manager.init_app(app)
@@ -116,7 +121,6 @@ def shop1():
         return render_template("shop.html", news=news, title='Shop', hr=href, product_type=product_type)
 
 
-
 @app.route('/register', methods=['GET', 'POST'])
 def reqister():
     form = RegisterForm()
@@ -159,6 +163,11 @@ def login():
     return render_template('singin.html', form=form)
 
 
+@app.route('/uploads/<filename>')
+def get_file(filename):
+    return send_from_directory(app.config['UPLOADED_PHOTOS_DEST'], filename)
+
+
 @app.route('/product', methods=['GET', 'POST'])
 @login_required
 def add_product():
@@ -171,6 +180,7 @@ def add_product():
         if request.method == "POST":
             db_sess = db_session.create_session()
             news = News()
+
             news.title = form.title.data
             news.content = form.content.data
             news.price = form.price.data
@@ -182,6 +192,18 @@ def add_product():
             news.spec = form.spec.data
 
             news.type = form.type_k.data
+
+            filename_cover = photos.save(form.cover.data)
+            news.cover = '../static/img/' + filename_cover
+
+            files = request.files.getlist("images")
+            img_list = []
+            print(files)
+            for file in files:
+                file.save('static/img/' + file.filename)
+                img_list.append(file.filename)
+
+            news.images = '/'.join(img_list)
 
             current_user.news.append(news)
             db_sess.merge(current_user)

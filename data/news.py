@@ -15,7 +15,7 @@ class News(SqlAlchemyBase):
     created_date = sqlalchemy.Column(sqlalchemy.DateTime,
                                      default=datetime.datetime.now)
 
-    image = sqlalchemy.Column(sqlalchemy.String, nullable=True)
+    images = sqlalchemy.Column(sqlalchemy.String, nullable=True)
     type = sqlalchemy.Column(sqlalchemy.String, nullable=True)
     color = sqlalchemy.Column(sqlalchemy.String, nullable=True)
     size = price = sqlalchemy.Column(sqlalchemy.String, nullable=True)
