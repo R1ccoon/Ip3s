@@ -1,4 +1,6 @@
-{% extends "base.html" %}
+
+<!-- saved from url=(0102)https://www.pythonanywhere.com/user/ip3s/files/home/ip3s/.virtualenvs/venv/ip3s/templates/product.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></head><body>{% extends "base.html" %}
 
 {% block content %}
     <style>
@@ -64,7 +66,7 @@
         </style>
 
     <h1>Добавление нового товара</h1>
-    <form action="" method="POST" enctype="multipart/form-data">
+    <form action="https://www.pythonanywhere.com/user/ip3s/files/home/ip3s/.virtualenvs/venv/ip3s/templates/product.html" method="POST" enctype="multipart/form-data">
         <!--Title-->
         {{ form.title.label }}
         {{ form.title(class="form-control", type="text") }}
@@ -77,7 +79,7 @@
         <!--Content-->
         {{ form.content.label }}
         {{ form.content(class="form-control") }}
-        {% for error in form.content.errors %}-->
+        {% for error in form.content.errors %}--&gt;
             <p content="alert alert-danger" role="alert">
                 {{ error }}
             </p>
@@ -86,7 +88,7 @@
         <!--Description-->
         {{ form.desc.label }}
         {{ form.desc(class="form-control") }}
-        {% for error in form.desc.errors %}-->
+        {% for error in form.desc.errors %}--&gt;
             <p content="alert alert-danger" role="alert">
                 {{ error }}
             </p>
@@ -95,7 +97,7 @@
         <!--Specification-->
         {{ form.spec.label }}
         {{ form.spec(class="form-control") }}
-        {% for error in form.spec.errors %}-->
+        {% for error in form.spec.errors %}--&gt;
             <p content="alert alert-danger" role="alert">
                 {{ error }}
             </p>
@@ -136,10 +138,11 @@
         {{ form.cover(class="form-control", type="file", accept="image/*") }}
 
         {{ form.images.label }}
-        {{ form.images(class="form-control", type="file", accept="image/*", multiple=multiple) }}
+        {{ form.images(class="form-control", type="file", accept="image/*") }}
 
         {{ form.submit(type="submit", class="btn btn-primary", value="Добавить товар") }}
     </form>
     <br>
 {% endblock %}
 
+</body></html>

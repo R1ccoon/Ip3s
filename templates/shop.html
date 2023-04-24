@@ -1,4 +1,6 @@
-{% extends "base.html" %}
+
+<!-- saved from url=(0099)https://www.pythonanywhere.com/user/ip3s/files/home/ip3s/.virtualenvs/venv/ip3s/templates/shop.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></head><body>{% extends "base.html" %}
 
 {% block content %}
 <!-- Start Content -->
@@ -6,38 +8,38 @@
         <div class="row">
 
             <div class="col-lg-3">
-                <h1 class="h2 pb-4">Categories</h1>
+                <h1 class="h2 pb-4">Фильтр</h1>
                 <ul class="list-unstyled templatemo-accordion">
                     <li class="pb-3">
-                        <a class="collapsed d-flex justify-content-between h3 text-decoration-none" href="#">
-                            Type
+                        <a class="collapsed d-flex justify-content-between h3 text-decoration-none" href="https://www.pythonanywhere.com/user/ip3s/files/home/ip3s/.virtualenvs/venv/ip3s/templates/shop.html#">
+                            Тип устройства
                             <i class="fa fa-fw fa-chevron-circle-down mt-1"></i>
                         </a>
                         <ul class="collapse show list-unstyled pl-3">
-                            <li><a class="text-decoration-none" href="{{hr}}type_iphone">Iphone</a></li>
-                            <li><a class="text-decoration-none" href="{{hr}}type_macbook">Macbook</a></li>
+                            <li><a class="text-decoration-none" href="https://www.pythonanywhere.com/user/ip3s/files/home/ip3s/.virtualenvs/venv/ip3s/templates/%7B%7Bhr%7D%7Dtype_iphone">Iphone</a></li>
+                            <li><a class="text-decoration-none" href="https://www.pythonanywhere.com/user/ip3s/files/home/ip3s/.virtualenvs/venv/ip3s/templates/%7B%7Bhr%7D%7Dtype_macbook">Macbook</a></li>
                         </ul>
                     </li>
                     <li class="pb-3">
-                        <a class="collapsed d-flex justify-content-between h3 text-decoration-none" href="#">
-                            Size
+                        <a class="collapsed d-flex justify-content-between h3 text-decoration-none" href="https://www.pythonanywhere.com/user/ip3s/files/home/ip3s/.virtualenvs/venv/ip3s/templates/shop.html#">
+                            Объём памяти
                             <i class="pull-right fa fa-fw fa-chevron-circle-down mt-1"></i>
                         </a>
                         <ul id="collapseTwo" class="collapse list-unstyled pl-3">
-                            <li><a class="text-decoration-none" href="{{hr}}size_256">256GB</a></li>
-                            <li><a class="text-decoration-none" href="{{hr}}size_512">512GB</a></li>
-                            <li><a class="text-decoration-none" href="{{hr}}size_1024">1TB</a></li>
+                            <li><a class="text-decoration-none" href="https://www.pythonanywhere.com/user/ip3s/files/home/ip3s/.virtualenvs/venv/ip3s/templates/%7B%7Bhr%7D%7Dsize_256">256GB</a></li>
+                            <li><a class="text-decoration-none" href="https://www.pythonanywhere.com/user/ip3s/files/home/ip3s/.virtualenvs/venv/ip3s/templates/%7B%7Bhr%7D%7Dsize_512">512GB</a></li>
+                            <li><a class="text-decoration-none" href="https://www.pythonanywhere.com/user/ip3s/files/home/ip3s/.virtualenvs/venv/ip3s/templates/%7B%7Bhr%7D%7Dsize_1024">1TB</a></li>
                         </ul>
                     </li>
                     <li class="pb-3">
-                        <a class="collapsed d-flex justify-content-between h3 text-decoration-none" href="#">
-                            Color
+                        <a class="collapsed d-flex justify-content-between h3 text-decoration-none" href="https://www.pythonanywhere.com/user/ip3s/files/home/ip3s/.virtualenvs/venv/ip3s/templates/shop.html#">
+                            Цвет
                             <i class="pull-right fa fa-fw fa-chevron-circle-down mt-1"></i>
                         </a>
                         <ul id="collapseThree" class="collapse list-unstyled pl-3">
-                            <li><a class="text-decoration-none" href="{{hr}}color_black">Black</a></li>
-                            <li><a class="text-decoration-none" href="{{hr}}color_white">White</a></li>
-                            <li><a class="text-decoration-none" href="{{hr}}color_purple">Purple</a></li>
+                            <li><a class="text-decoration-none" href="https://www.pythonanywhere.com/user/ip3s/files/home/ip3s/.virtualenvs/venv/ip3s/templates/%7B%7Bhr%7D%7Dcolor_black">Черный</a></li>
+                            <li><a class="text-decoration-none" href="https://www.pythonanywhere.com/user/ip3s/files/home/ip3s/.virtualenvs/venv/ip3s/templates/%7B%7Bhr%7D%7Dcolor_white">Белый</a></li>
+                            <li><a class="text-decoration-none" href="https://www.pythonanywhere.com/user/ip3s/files/home/ip3s/.virtualenvs/venv/ip3s/templates/%7B%7Bhr%7D%7Dcolor_purple">Фиолетовый</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -49,7 +51,7 @@
                     <div class="col-md-6 pb-4">
                         <div class="d-flex">
                             {% if is_admin %}
-                                <a class="btn btn-success" href="/product">Добавить товар</a>
+                                <a class="btn btn-success" href="https://www.pythonanywhere.com/product">Добавить товар</a>
                             {% endif %}
                         </div>
                     </div>
@@ -59,21 +61,25 @@
                         <div class="col-md-4">
                             <div class="card mb-4 product-wap rounded-0">
                                 <div class="card rounded-0">
-                                    <img class="card-img rounded-0 img-fluid" style="width: 600px; height: 450px" src="{{ item.cover }}">
-                                    <div class="card-img-overlay rounded-0 product-overlay d-flex align-items-center justify-content-center">
-                                        <ul class="list-unstyled">
-                                            <li><a class="btn btn-success text-white" href="/shop_single/{{ item.id }}"><i class="far fa-heart"></i></a></li>
-                                            <li><a class="btn btn-success text-white mt-2" href="/shop_single/{{ item.id }}"><i class="far fa-eye"></i></a></li>
-                                            <li><a class="btn btn-success text-white mt-2" href="/shop1/{{ item.id }}"><i class="fas fa-cart-plus"></i></a></li>
-                                        </ul>
-                                    </div>
+                                    <a href="https://www.pythonanywhere.com/shop_single/%7B%7B%20item.id%20%7D%7D"><img class="card-img rounded-0 img-fluid" style="width: 600px; height: 450px" src="./shop_files/{{ item.cover }}"></a>
+                                    {% if is_admin %}
+                                        <div class="card-img-overlay rounded-0 product-overlay d-flex align-items-center justify-content-center">
+                                            <ul class="list-unstyled">
+
+                                                <li><a class="btn btn-success text-white" href="https://www.pythonanywhere.com/delete_item/%7B%7B%20item.id%20%7D%7D"><i class="fa fa-trash"></i></a></li>
+
+                                                <li><a class="btn btn-success text-white mt-2" href="https://www.pythonanywhere.com/shop_single/%7B%7B%20item.id%20%7D%7D"><i class="far fa-eye"></i></a></li>
+                                                <li><a class="btn btn-success text-white mt-2" href="https://www.pythonanywhere.com/shop1/%7B%7B%20item.id%20%7D%7D"><i class="fas fa-cart-plus"></i></a></li>
+                                            </ul>
+                                        </div>
+                                    {% endif %}
                                 </div>
                                 <div class="card-body">
                                     <h3 href="shop-single.html" class="h3 text-decoration-none mb-0">{{ item.title }}</h3>
                                     <ul class="w-100 list-unstyled d-flex justify-content-between mb-0">
                                         <li>{{ item.content }}</li>
                                     </ul>
-                                    <p class="text-center mb-0">От {{ item.price }}$</p>
+                                    <p class="text-center mb-0">{{ item.price }}₽</p>
                                 </div>
                             </div>
                         </div>
@@ -86,3 +92,4 @@
 
 
 {% endblock  %}
+</body></html>

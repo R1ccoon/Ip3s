@@ -15,13 +15,18 @@ import sqlite3
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = '40d1649f-0493-4b70-98ba-98533de7710b'
-app.config['UPLOADED_PHOTOS_DEST'] = 'static/img'
+app.config['UPLOADED_PHOTOS_DEST'] = '/home/ip3s/.virtualenvs/venv/ip3s/static/img'
+
+DB_PATH = "/home/ip3s/.virtualenvs/venv/ip3s/db/blogs.db"
+
+db_session.global_init(DB_PATH)
 
 photos = UploadSet('photos', IMAGES)
 configure_uploads(app, photos)
 
 login_manager = LoginManager()
 login_manager.init_app(app)
+login_manager.login_view = 'reqister'
 
 a = 0
 
@@ -40,8 +45,7 @@ def logout():
 
 
 def main():
-    db_session.global_init("db/blogs.db")
-    app.run()
+    db_session.global_init(DB_PATH)
 
 
 @app.route("/")
@@ -54,12 +58,13 @@ def index():
     else:
         news = db_sess.query(News).filter(News.is_private != True)
 
-    return render_template("index.html", news=news, title='Home')
+    return render_template("index.html", news=news, title='Главная')
 
 
 @app.route("/shop/<string:filtr>")
 def shop(filtr):
     m = filtr.split('.')
+
     db_sess = db_session.create_session()
     sl = ''
     als = db_sess.query(News).filter()
@@ -68,7 +73,7 @@ def shop(filtr):
         for i in m:
             s, s1 = i.split('_')
             b = eval(f'j.{s}')
-            if s1 not in b:
+            if s1 not in str(b).lower():
                 k = 1
         if k == 0:
             sl += f" (News.id == '{j.id}') |"
@@ -79,7 +84,7 @@ def shop(filtr):
     except:
         news = db_sess.query(News).filter(News.id == 'xz')
     href = filtr + '.'
-    return render_template("shop.html", news=news, title='Shop', hr=href)
+    return render_template("shop.html", news=news, title='Магазин', hr=href)
 
 
 @app.route('/shop1/<int:movie_id>')
@@ -87,7 +92,7 @@ def post(movie_id=None):
     db_sess = db_session.create_session()
     user = db_sess.query(User).filter(User.id == current_user.id).first()
 
-    con = sqlite3.connect('db/blogs.db')
+    con = sqlite3.connect(DB_PATH)
     cur = con.cursor()
     cur.execute(
         f"""UPDATE users SET cart="{user.cart} {movie_id}" WHERE id={current_user.id}""")
@@ -110,7 +115,7 @@ def shop1():
             if i.type.lower() not in product_type:
                 product_type.append(i.type)
 
-        return render_template("shop.html", news=news, title='Shop', hr=href, product_type=product_type,
+        return render_template("shop.html", news=news, title='Магазин', hr=href, product_type=product_type,
                                is_admin=is_admin)
     except:
         product_type = []
@@ -118,7 +123,7 @@ def shop1():
         for i in news:
             if i.type.lower() not in product_type:
                 product_type.append(i.type)
-        return render_template("shop.html", news=news, title='Shop', hr=href, product_type=product_type)
+        return render_template("shop.html", news=news, title='Магазин', hr=href, product_type=product_type)
 
 
 @app.route('/register', methods=['GET', 'POST'])
@@ -196,14 +201,8 @@ def add_product():
             filename_cover = photos.save(form.cover.data)
             news.cover = '../static/img/' + filename_cover
 
-            files = request.files.getlist("images")
-            img_list = []
-            print(files)
-            for file in files:
-                file.save('static/img/' + file.filename)
-                img_list.append(file.filename)
-
-            news.images = '/'.join(img_list)
+            filename_images = photos.save(form.images.data)
+            news.images = '../static/img/' + filename_images
 
             current_user.news.append(news)
             db_sess.merge(current_user)
@@ -215,59 +214,23 @@ def add_product():
         return redirect('/')
 
 
-@app.route('/product_edit/<int:id>', methods=['GET', 'POST'])
-@login_required
-def edit_product(id):
-    form = ProductForm()
-    if request.method == "GET":
-        db_sess = db_session.create_session()
-        news = db_sess.query(News).filter(News.id == id,
-                                          News.user == current_user
-                                          ).first()
-        if news:
-            form.title.data = news.title
-            form.content.data = news.content
-            form.is_private.data = news.is_private
-        else:
-            abort(404)
-    if form.validate_on_submit():
-        db_sess = db_session.create_session()
-        news = db_sess.query(News).filter(News.id == id,
-                                          News.user == current_user
-                                          ).first()
-        if news:
-            news.title = form.title.data
-            news.content = form.content.data
-            news.is_private = form.is_private.data
-            db_sess.commit()
-            return redirect('/')
-        else:
-            abort(404)
-    return render_template('product.html',
-                           title='Редактирование новости',
-                           form=form
-                           )
-
-
 @app.route("/shop_single/<int:id>")
 @login_required
 def shop_single(id):
     db_sess = db_session.create_session()
     news = db_sess.query(News).filter(News.id == id)
 
-    return render_template("shop-single.html", news=news, title='Product')
+    return render_template("shop-single.html", news=news, title='Продукт')
 
 
 @app.route("/about")
-@login_required
 def contact():
     return render_template('about.html', title='About')
 
 
 @app.route("/contact")
-@login_required
 def cntct():
-    return render_template('contact.html', title='Contact')
+    return render_template('contact.html', title='Контакты')
 
 
 @app.route("/cart")
@@ -284,13 +247,16 @@ def cart():
             user_product.append(db_sess.query(News).filter(News.id == i).first())
     else:
         user_product = False
-
-    return render_template('cart.html', news=user_product, title='cart')
+    suma = 0
+    if user.cart:
+        for i in user_product:
+            suma += i.price
+    return render_template('cart.html', news=user_product, title='Корзина', suma=suma)
 
 
 @app.route('/clear_cart')
 def clear_cart():
-    con = sqlite3.connect('db/blogs.db')
+    con = sqlite3.connect(DB_PATH)
     cur = con.cursor()
     cur.execute(
         f"""UPDATE users SET cart="" WHERE id={current_user.id}""")
@@ -298,5 +264,24 @@ def clear_cart():
     return redirect('/cart')
 
 
+@app.route('/delete_item/<int:id>')
+def delete_item(id):
+    con = sqlite3.connect(DB_PATH)
+    cur = con.cursor()
+    cur.execute(
+        f"""DELETE from news where id = {id}""")
+    con.commit()
+    return redirect('/shop')
+
+
+@app.route('/profile')
+def proflie():
+    db_sess = db_session.create_session()
+
+    user = db_sess.query(User).filter(User.id == current_user.id).first()
+    return render_template('profile.html', title='Профиль', user=user)
+
+
 if __name__ == '__main__':
+    db_session.global_init("db/blogs.db")
     main()

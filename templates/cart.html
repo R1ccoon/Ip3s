@@ -1,4 +1,6 @@
-{% extends "base.html" %}
+
+<!-- saved from url=(0099)https://www.pythonanywhere.com/user/ip3s/files/home/ip3s/.virtualenvs/venv/ip3s/templates/cart.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></head><body>{% extends "base.html" %}
 
 {% block content %}
 
@@ -8,9 +10,9 @@
 				<div class="col">
 					<!-- Column Titles -->
 					<div class="cart_info_columns clearfix">
-						<div class="cart_info_col cart_info_col_product">Product</div>
+						<div class="cart_info_col cart_info_col_product">Товар</div>
 
-						<div class="cart_info_col cart_info_col_total">Price</div>
+						<div class="cart_info_col cart_info_col_total">Цена</div>
 					</div>
 				</div>
 			</div>
@@ -23,29 +25,29 @@
 								<!-- Name -->
 								<div class="cart_item_product d-flex flex-row align-items-center justify-content-start">
 									<div class="cart_item_image">
-										<div><img src={{ item.image }} alt=""></div>
+										<div><img src="./cart_files/{{ item.cover }}" alt=""></div>
 									</div>
 									<div class="cart_item_name_container">
-										<div class="cart_item_name"><a href="#">{{ item.title }}</a></div>
-										<div class="cart_item_edit"><a href="#">{{ item.content }}</a></div>
+										<div class="cart_item_name"><a href="https://www.pythonanywhere.com/user/ip3s/files/home/ip3s/.virtualenvs/venv/ip3s/templates/cart.html#">{{ item.title }}</a></div>
+										<div class="cart_item_edit"><a href="https://www.pythonanywhere.com/user/ip3s/files/home/ip3s/.virtualenvs/venv/ip3s/templates/cart.html#">{{ item.content }}</a></div>
 									</div>
 								</div>
 
 								<!-- Total -->
-								<div class="cart_item_total">{{ item.price }}$</div>
+								<div class="cart_item_total">{{ item.price }}₽</div>
 							</div>
 						{% endfor %}
 					{% else %}
-						Not tovar
+						Корзина пуста
 					{% endif %}
 				</div>
 			</div>
 			<div class="row row_cart_buttons">
 				<div class="col">
 					<div class="cart_buttons d-flex flex-lg-row flex-column align-items-start justify-content-start">
-						<div class="button continue_shopping_button"><a href="/shop">Continue shopping</a></div>
+						<div class="button continue_shopping_button"><a href="https://www.pythonanywhere.com/shop">Продолжить покупки</a></div>
 						<div class="cart_buttons_right ml-lg-auto">
-							<div class="button clear_cart_button"><a href="/clear_cart">Clear cart</a></div>
+							<div class="button clear_cart_button"><a href="https://www.pythonanywhere.com/clear_cart">Очистить корзину</a></div>
 						</div>
 					</div>
 				</div>
@@ -57,43 +59,42 @@
 
 				<div class="col-lg-6 offset-lg-2">
 					<div class="cart_total">
-						<div class="section_title">Cart total</div>
-						<div class="section_subtitle">Final info</div>
 						<div class="cart_total_container">
 							<ul>
 
 								<li class="d-flex flex-row align-items-center justify-content-start">
-									<div class="cart_total_title">Subtotal</div>
-									<div class="cart_total_value ml-auto">$790.90</div>
+									<div class="cart_total_title">Сумма товаров:</div>
+									<div class="cart_total_value ml-auto"> {{suma}}₽</div>
 								</li>
 								<li class="d-flex flex-row align-items-center justify-content-start">
-									<div class="cart_total_title">Shipping</div>
-									<div class="cart_total_value ml-auto">Free</div>
+									<div class="cart_total_title">Доставка:</div>
+									<div class="cart_total_value ml-auto"> Бесплатно</div>
 								</li>
 								<li class="d-flex flex-row align-items-center justify-content-start">
-									<div class="cart_total_title">Total</div>
-									<div class="cart_total_value ml-auto">$790.90</div>
+									<div class="cart_total_title">Итого:</div>
+									<div class="cart_total_value ml-auto"> {{suma}}₽</div>
 								</li>
 							</ul>
 						</div>
-						<div class="button checkout_button"><a href="#">Proceed to checkout</a></div>
+						<div class="button checkout_button"><a href="https://www.pythonanywhere.com/user/ip3s/files/home/ip3s/.virtualenvs/venv/ip3s/templates/cart.html#">Оплатить</a></div>
 					</div>
 				</div>
 			</div>
-		</div>		
+		</div>
 	</div>
 
 
 
-<script src="../static/js/jquery-3.2.1.min.js"></script>
-<script src="../static/styles/bootstrap4/popper.js"></script>
-<script src="../static/styles/bootstrap4/bootstrap.min.js"></script>
-<script src="../static/plugins/greensock/TweenMax.min.js"></script>
-<script src="../static/plugins/greensock/TimelineMax.min.js"></script>
-<script src="../static/plugins/scrollmagic/ScrollMagic.min.js"></script>
-<script src="../static/plugins/greensock/animation.gsap.min.js"></script>
-<script src="../static/plugins/greensock/ScrollToPlugin.min.js"></script>
-<script src="../static/plugins/easing/easing.js"></script>
-<script src="../static/plugins/parallax-js-master/parallax.min.js"></script>
-<script src="../static/js/cart.js"></script>
+<script src="./cart_files/jquery-3.2.1.min.js.загрузка"></script>
+<script src="./cart_files/popper.js.загрузка"></script>
+<script src="./cart_files/bootstrap.min.js.загрузка"></script>
+<script src="./cart_files/TweenMax.min.js.загрузка"></script>
+<script src="./cart_files/TimelineMax.min.js.загрузка"></script>
+<script src="./cart_files/ScrollMagic.min.js.загрузка"></script>
+<script src="./cart_files/animation.gsap.min.js.загрузка"></script>
+<script src="./cart_files/ScrollToPlugin.min.js.загрузка"></script>
+<script src="./cart_files/easing.js.загрузка"></script>
+<script src="./cart_files/parallax.min.js.загрузка"></script>
+<script src="./cart_files/cart.js.загрузка"></script>
 {% endblock %}
+</body></html>
