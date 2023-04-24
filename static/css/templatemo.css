@@ -1,192 +1,256 @@
-/*
+<!DOCTYPE html>
 
-TemplateMo 559 Zay Shop
-
-https://templatemo.com/tm-559-zay-shop
-
----------------------------------------------
-Table of contents
-------------------------------------------------
-1. Typography
-2. General
-3. Nav
-4. Hero Carousel
-5. Accordion
-6. Shop
-7. Product
-8. Carousel Hero
-9. Carousel Brand
-10. Services
-11. Contact map
-12. Footer
-13. Small devices (landscape phones, 576px and up)
-14. Medium devices (tablets, 768px and up)
-15. Large devices (desktops, 992px and up)
-16. Extra large devices (large desktops, 1200px and up)
---------------------------------------------- */
+<html lang="en" style="height: 100%">
+    <head>
+        <meta charset="utf-8">
+        <title>Login: PythonAnywhere</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Login: PythonAnywhere">
+        <meta name="author" content="PythonAnywhere LLP">
+        <meta name="google-site-verification" content="O4UxDrfcHjC44jybs2vajc1GgRkTKCTRgVzeV6I9V14" />
 
 
+        <!-- Le styles -->
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i" />
+
+        <link rel="stylesheet" href="/static/CACHE/css/output.ff34947502d6.css" type="text/css" media="screen">
+        <link rel="stylesheet" href="/static/CACHE/css/output.b9a4961a16f7.css" type="text/css"><link rel="stylesheet" href="/static/CACHE/css/output.f5a02b1eb0f3.css" type="text/css" media="screen">
+
+        <!-- Le javascript -->
+        <script type="text/javascript">
+            var Anywhere = {};
+            Anywhere.urls = {};
+            Anywhere.csrfToken = "P53UAfXRn6fReMpSJx9QUltLDS3Y1z5Or2HZZCF2AwJy9oN0rrlXqQiMqj81chNN";
+        </script>
+        <script src="/static/CACHE/js/output.47562153ee77.js"></script>
+        
+
+        <script src="/static/CACHE/js/output.a0cffd228d2e.js"></script>
+        
+        
+
+    </head>
+
+     <body style="height:100%;">
+       <div style="min-height: 100%; position: relative;">
+        
+  
+    <nav class="navbar alert alert-warning alert-dismissible cookie-warning" style="padding: 10px 35px 5px 35px; min-height: auto;" id="id_cookie_warning_marker_for_response_middleware">
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+      <p>
+        <small>
+          We use cookies to provide social media features and to analyse our traffic. We also share information about your use of our site with our social media and analytics partners. <a href="/privacy/#cookies">Details here</a>.
+        </small>
+      </p>
+    </nav>
+  
+
+        
+  <nav class="navbar top-nav hidden-xs">
+    <div class="container">
+      <ul class="nav navbar-nav navbar-right">
+        
+<li class=""><a href="" target="_parent" class="feedback_link">Send feedback</a></li>
 
 
-/* Typography */
-body, ul, li, p, a, label, input, div {
-  font-family: 'Roboto', sans-serif;
-  font-size: 18px !important;
-  font-weight: 300 !important;
-}
-.h1 {
-  font-family: 'Roboto', sans-serif;
-  font-size: 48px !important;
-  font-weight: 200 !important;
-}
-.h2 {
-  font-family: 'Roboto', sans-serif;
-  font-size: 30px !important;
-  font-weight: 300;
-}
-.h3 {
-  font-family: 'Roboto', sans-serif;
-  font-size: 22px !important;
-}
+<li class=""><a href="/forums/" target="_parent" class="forums_link">Forums</a></li>
+<li class=""><a href="https://help.pythonanywhere.com/" target="_parent" class="help_link">Help</a></li>
+<li class=""><a href="https://blog.pythonanywhere.com/" target="_parent" class="blog_link">Blog</a></li>
 
-/* General */
-.logo { font-weight: 500 !important;}
-.text-warning {  color: #ede861 !important;}
-.text-muted { color: #bcbcbc !important;}
-.text-success { color: #ffffff !important;}
-.text-light { color: #cfd6e1 !important;}
-.bg-dark { background-color: #000000 !important;}
-.bg-light { background-color: #000000 !important;}
-.bg-black { background-color: #0d130f !important;}
-.bg-success { background-color: #59ab6e !important;}
-.btn-success {
-  background-color: #59ab6e !important;
-  border-color: #56ae6c !important;
-}
-.pagination .page-link:hover {color: #000;}
-.pagination .page-link:hover, .pagination .page-link.active {
-  background-color: #69bb7e;
-  color: #fff;
-}
-/* Nav */
-#templatemo_nav_top { min-height: 40px;}
-#templatemo_nav_top * { font-size: .9em !important;}
-#templatemo_main_nav a { color: #ffffff;}
-#templatemo_main_nav a:hover { color: #69bb7e;}
-#templatemo_main_nav .navbar .nav-icon { margin-right: 20px;}
+  <li class=""><a style="font-weight: bold;" href="/pricing/" target="_parent" class="pricing_link">Pricing & signup</a></li>
+  <li class=""><a href="/login/?next=/login/" class="login_link" target="_parent">Log in</a></li>
 
-/* Hero Carousel */
-#template-mo-zay-hero-carousel { background: #efefef !important;}
-/* Accordion */
-.templatemo-accordion a { color: #186118;}
-.templatemo-accordion a:hover { color: #333d4a;}
-/* Shop */
-.shop-top-menu a:hover { color: #69bb7e !important;}
-/* Product */
-.product-wap { box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.10);}
-.product-wap .product-color-dot.color-dot-red { background:#f71515;}
-.product-wap .product-color-dot.color-dot-blue { background:#6db4fe;}
-.product-wap .product-color-dot.color-dot-black { background:#000000;}
-.product-wap .product-color-dot.color-dot-light { background:#e0e0e0;}
-.product-wap .product-color-dot.color-dot-green { background:#0bff7e;}
-.card.product-wap .card .product-overlay {
-  background: rgba(0,0,0,.2);
-  visibility: hidden;
-  opacity: 0;
-  transition: .3s;
-}
-.card.product-wap:hover .card .product-overlay {
-  visibility: visible;
-  opacity: 1;
-}
-.card.product-wap a { color: #000;}
-#carousel-related-product .slick-slide:focus { outline: none !important;}
-#carousel-related-product .slick-dots li button:before {
-  font-size: 15px;
-  margin-top: 20px;
-}
-/* Brand */
-.brand-img {
-  filter: grayscale(100%);
-  opacity: 0.5;
-  transition: .5s;
-}
-.brand-img:hover {
-  filter: grayscale(0%);
-  opacity: 1;
-}
-/* Carousel Hero */
-#template-mo-zay-hero-carousel .carousel-indicators li {
-  margin-top: -50px;
-  background-color: #59ab6e;
-}
-#template-mo-zay-hero-carousel .carousel-control-next i,
-#template-mo-zay-hero-carousel .carousel-control-prev i {
-  color: #59ab6e !important;
-  font-size: 2.8em !important;
-}
-/* Carousel Brand */
-.tempaltemo-carousel .h1 {
-  font-size: .5em !important;
-  color: #000 !important;
-}
-/* Services */
-.services-icon-wap {transition: .3s;}
-.services-icon-wap:hover, .services-icon-wap:hover i {color: #fff;}
-.services-icon-wap:hover {background: #69bb7e;}
-/* Contact map */
-.leaflet-control a, .leaflet-control { font-size: 10px !important;}
-.form-control { border: 1px solid #e8e8e8;}
-/* Footer */
-#tempaltemo_footer a { color: #dcdde1;}
-#tempaltemo_footer a:hover { color: #68bb7d;}
-#tempaltemo_footer ul.footer-link-list li { padding-top: 10px;}
-#tempaltemo_footer ul.footer-icons li {
-  width: 2.6em;
-  height: 2.6em;
-  line-height: 2.6em;
-}
-#tempaltemo_footer ul.footer-icons li:hover {
-  background-color: #cfd6e1;
-  transition: .5s;
-}
-#tempaltemo_footer ul.footer-icons li:hover i {
-  color: #212934;
-  transition: .5s;
-}
-#tempaltemo_footer .border-light { border-color: #2d343f !important;}
-/*
-// Extra small devices (portrait phones, less than 576px)
-// No media query since this is the default in Bootstrap
-*/
-/* Small devices (landscape phones, 576px and up)*/
-.product-wap .h3, .product-wap li, .product-wap i, .product-wap p {
-  font-size: 12px !important;
-}
-.product-wap .product-color-dot {
-  width: 6px;
-  height: 6px;
-}
 
-@media (min-width: 576px) {
-  .tempaltemo-carousel .h1 { font-size: 1em !important;}
-}
+      </ul>
+    </div>
+  </nav>
 
-/*// Medium devices (tablets, 768px and up)*/
-@media (min-width: 768px) {
-  #templatemo_main_nav .navbar-nav {max-width: 450px;}
- }
+  
 
-/* Large devices (desktops, 992px and up)*/
-@media (min-width: 992px) {
-  #templatemo_main_nav .navbar-nav {max-width: 550px;}
-  #template-mo-zay-hero-carousel .carousel-item {min-height: 30rem !important; background-color: #000000;}
-  .product-wap .h3, .product-wap li, .product-wap i, .product-wap p {font-size: 18px !important;}
-  .product-wap .product-color-dot {
-    width: 12px;
-    height: 12px;
-  }
-}
 
-/* Extra large devices (large desktops, 1200px and up)*/
-@media (min-width: 1200px) {}
+
+
+  <nav class="navbar primary-navbar">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#main_nav" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/">
+          <img id='id_logo' src="/static/anywhere/images/PA-logo.svg" width="225">
+        </a>
+      </div>
+
+      <div class="collapse navbar-collapse" id="main_nav">
+        <ul class="nav navbar-nav navbar-right">
+          
+            
+
+          
+          
+<li class="visible-xs"><a href="" target="_parent" class="feedback_link">Send feedback</a></li>
+
+
+<li class="visible-xs"><a href="/forums/" target="_parent" class="forums_link">Forums</a></li>
+<li class="visible-xs"><a href="https://help.pythonanywhere.com/" target="_parent" class="help_link">Help</a></li>
+<li class="visible-xs"><a href="https://blog.pythonanywhere.com/" target="_parent" class="blog_link">Blog</a></li>
+
+  <li class="visible-xs"><a style="font-weight: bold;" href="/pricing/" target="_parent" class="pricing_link">Pricing & signup</a></li>
+  <li class="visible-xs"><a href="/login/?next=/login/" class="login_link" target="_parent">Log in</a></li>
+
+
+        </ul>
+      </div>
+
+    </div>
+  </nav>
+
+  <div class="container">
+    
+
+  </div>
+
+  
+
+    
+  
+
+
+        
+  
+
+
+        
+    
+  <div class="container">
+    <div class="row">
+      <div class="col-md-5 offset-md-3">
+        
+  <h1>Log in</h1>
+
+  
+
+  <form class="form" action="" method="post"><input type="hidden" name="csrfmiddlewaretoken" value="P53UAfXRn6fReMpSJx9QUltLDS3Y1z5Or2HZZCF2AwJy9oN0rrlXqQiMqj81chNN">
+    <table>
+  <style type="text/css" scoped>
+    /* hide stupid updowney arrows on number input */
+    input[type="number"]::-webkit-outer-spin-button,
+    input[type="number"]::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+    input[type="number"] {
+      -moz-appearance: textfield;
+    }
+    .d-none {
+      display: none;
+    }
+  </style>
+  <input type="hidden" name="login_view-current_step" value="auth" id="id_login_view-current_step">
+  
+
+<p class="form-group">
+  <input type="text" name="auth-username" placeholder="Username or email address" tabindex="1" autocorrect="off" autocapitalize="off" class="form-control" maxlength="100" required id="id_auth-username">
+  <span class="help-block">
+    No account? <a href="/pricing/" id="id_signup_link">Sign up here!</a>
+  </span>
+</p>
+<p class="form-group">
+  <input type="password" name="auth-password" placeholder="Password" tabindex="2" class="form-control" required id="id_auth-password">
+  <span class="help-block">
+    <a href="/password_reset/">Forgotten password?</a>
+  </span>
+</p>
+<div class="clear"></div>
+
+</table>
+
+
+    
+    <div style="margin-left: -9999px"><input type="submit" value=""/></div>
+
+    
+
+    
+    <button id="id_next" type="submit" class="btn btn-primary">Log in</button>
+
+    
+
+  </form>
+
+      </div>
+    </div>
+  </div>
+
+
+
+        
+  <div class="footer-spacer"></div>
+  <footer id="id_copyright_div" class="footer">
+    <p>
+      Copyright &copy; 2011-2023 <a href="/about/company_details/">PythonAnywhere LLP</a>
+      &mdash;
+      <a href="/terms/">Terms</a>
+      &mdash;
+      <a href="/privacy/">Privacy & Cookies</a><br/>
+      </p>
+  </footer>
+
+      </div>
+
+        
+
+
+        <div id="id_feedback_dialog" title="Help us improve" style="display:none">
+    <div id="id_feedback_dialog_blurb_big" class="dialog_blurb_big">
+        It's always a pleasure to hear from you!
+    </div>
+    <div id="id_feedback_dialog_blurb_small">
+        Ask us a question, or tell us what you love or hate about PythonAnywhere.<br/>
+        We'll get back to you over email ASAP.
+    </div>
+    <textarea id="id_feedback_dialog_text" rows="6"></textarea>
+    <input id="id_feedback_dialog_email_address" type="text" placeholder="Email address (optional - only necessary if you would like us to contact you)"/>
+    
+    <div id="id_feedback_dialog_error" style="display: none">
+        Sorry, there was an error connecting to the server. <br/>Please try again in a few moments...
+    </div>
+    <div id="id_feedback_dialog_rate_limit_error" style="display: none">
+        Sorry, we have had to rate-limit your feedback sending.<br/>Please try again in a few moments...
+    </div>
+    <div id="id_feedback_dialog_success" style="display: none">
+        Thanks for the feedback! Our tireless devs will get back to you soon.
+    </div>
+    <div class="dialog_buttons">
+        <img id="id_feedback_dialog_spinner" src="/static/anywhere/images/spinner-small.gif" />
+        <button class="btn btn-primary" id="id_feedback_dialog_ok_button">OK</button>
+        <button class="btn btn-default" id="id_feedback_dialog_cancel_button">Cancel</button>
+    </div>
+    <div id="id_feedback_dialog_only_close_button" style="display: none">
+        <button class="btn btn-primary" id="id_feedback_dialog_close_button">Close</button>
+    </div>
+</div>
+
+
+        
+            <script>
+                (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+                ga('create', 'UA-18014859-6', 'auto');
+                ga('send', 'pageview');
+            </script>
+        
+
+        
+        <!-- preload font awesome fonts to avoid glitch when switching icons -->
+        <div style="width: 0; height: 0; overflow: hidden"><i class="fa fa-square-o fa-3x" ></i></div>
+    </body>
+</html>
