@@ -1,6 +1,4 @@
-
-<!-- saved from url=(0102)https://www.pythonanywhere.com/user/ip3s/files/home/ip3s/.virtualenvs/venv/ip3s/templates/profile.html -->
-<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></head><body>{% extends "base.html" %}
+{% extends "base.html" %}
 
 {% block content %}
  <style>
@@ -51,16 +49,16 @@
 
  <div class="prof-container">
   <h1>Страница пользователя</h1>
-  <img src="./profile_files/ava.png" alt="ava">
-  <br>
+  <img src="../static/img/ava.png" alt="ava">
+  </br>
   <p>Имя: {{ user.name }}</p>
   <p>Почта: {{ user.email }}</p>
   <br>
-  <a href="https://www.pythonanywhere.com/logout">
+  <a href="/logout">
    <button>Выйти из аккаунта</button>
   </a>
 
 
  </div>
 
-{% endblock %}</body></html>
+{% endblock %}

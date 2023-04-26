@@ -1,6 +1,33 @@
 
-<!-- saved from url=(0099)https://www.pythonanywhere.com/user/ip3s/files/home/ip3s/.virtualenvs/venv/ip3s/templates/news.html -->
-<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></head><body>{% extends "base.html" %}
+<!--<h1>Добавление новости</h1>-->
+<!--<form action="" method="post">-->
+<!--    {{ form.hidden_tag() }}-->
+<!--    <p>-->
+<!--        {{ form.title.label }}<br>-->
+<!--        {{ form.title(class="form-control") }}<br>-->
+<!--        {% for error in form.title.errors %}-->
+<!--            <p class="alert alert-danger" role="alert">-->
+<!--                {{ error }}-->
+<!--            </p>-->
+<!--        {% endfor %}-->
+<!--    </p>-->
+<!--    <p>-->
+<!--        {{ form.content.label }}<br>-->
+<!--        {{ form.content(class="form-control") }}<br>-->
+<!--        {% for error in form.content.errors %}-->
+<!--            <p content="alert alert-danger" role="alert">-->
+<!--                {{ error }}-->
+<!--            </p>-->
+<!--        {% endfor %}-->
+<!--    </p>-->
+<!--    <p>{{ form.is_private() }} {{ form.is_private.label }}</p>-->
+<!--    <p>{{ form.submit(type="submit", class="btn btn-primary") }}</p>-->
+<!--    {{message}}-->
+<!--</form>-->
+
+
+
+{% extends "base.html" %}
 
 {% block content %}
 
@@ -67,7 +94,7 @@
         </style>
 
     <h1>Добавление нового товара</h1>
-    <form action="https://www.pythonanywhere.com/user/ip3s/files/home/ip3s/.virtualenvs/venv/ip3s/templates/news.html" method="post" enctype="multipart/form-data">
+    <form action="" method="post" enctype="multipart/form-data">
         {{ form.title.label }}
         {{ form.title(class="form-control", type="text") }}
         {% for error in form.title.errors %}
@@ -78,7 +105,7 @@
 
         {{ form.content.label }}
         {{ form.content(class="form-control") }}
-        {% for error in form.content.errors %}--&gt;
+        {% for error in form.content.errors %}-->
             <p content="alert alert-danger" role="alert">
                 {{ error }}
             </p>
@@ -103,4 +130,4 @@
     </form>
     <br>
 
-{% endblock %}</body></html>
+{% endblock %}

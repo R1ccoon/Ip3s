@@ -19,6 +19,8 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;300;400;500;700;900&display=swap">
     <link rel="stylesheet" href="../static/css/fontawesome.min.css">
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin="" />
+
+    <link rel="shortcut icon" href="../static/img/favicon.png" type="image/png">
 </head>
 
 <body>
@@ -28,9 +30,9 @@
             <div class="w-100 d-flex justify-content-between">
                 <div>
                     <i class="fa fa-envelope mx-2"></i>
-                    <a class="navbar-sm-brand text-light text-decoration-none" href="mailto:info@company.com">info@company.com</a>
+                    <a class="navbar-sm-brand text-light text-decoration-none" href="mailto:info@company.com">ip3s@mail.com</a>
                     <i class="fa fa-phone mx-2"></i>
-                    <a class="navbar-sm-brand text-light text-decoration-none" href="tel:010-020-0340">010-020-0340</a>
+                    <a class="navbar-sm-brand text-light text-decoration-none" href="tel:010-020-0340">123-456-758</a>
                 </div>
                 <div>
                     <a class="text-light" href="https://fb.com/templatemo" target="_blank" rel="sponsored"><i class="fab fa-facebook-f fa-sm fa-fw me-2"></i></a>
@@ -60,16 +62,16 @@
                 <div class="flex-fill">
                     <ul class="nav navbar-nav d-flex justify-content-between mx-lg-auto">
                         <li class="nav-item">
-                            <a class="nav-link" href="/">Home</a>
+                            <a class="nav-link" href="/">Главная</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/about">About</a>
+                            <a class="nav-link" href="/about">О нас</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/shop">Shop</a>
+                            <a class="nav-link" href="/shop">Каталог</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/contact">Contact</a>
+                            <a class="nav-link" href="/contact">Поддержка</a>
                         </li>
                     </ul>
                 </div>
@@ -87,11 +89,11 @@
                         <a class="nav-icon position-relative text-decoration-none" href="/cart">
                             <i class="fa fa-fw fa-cart-arrow-down text-dark mr-1"></i>
                         </a>
-                        <a href="/logout" class="text-decoration-none user-cab" style="display: flex;">
+                        <a href="/profile" class="text-decoration-none user-cab" style="display: flex;">
                             <div class="nav-icon position-relative text-decoration-none">
                                 <i class="fa fa-fw fa-user text-dark mr-3"></i>
                             </div>
-                            <div href="#" class="text-decoration-none">{{ current_user.name }}</div>
+                            <div class="text-decoration-none">{{ current_user.name }}</div>
                         </a>
 
                     {% else %}
@@ -139,21 +141,21 @@
                     <ul class="list-unstyled text-light footer-link-list">
                         <li>
                             <i class="fas fa-map-marker-alt fa-fw"></i>
-                            123 Consectetur at ligula 10660
+                            Saint P. street "Pushkina" house "Kolotushkina"
                         </li>
                         <li>
                             <i class="fa fa-phone fa-fw"></i>
-                            <a class="text-decoration-none" href="tel:010-020-0340">010-020-0340</a>
+                            <a class="text-decoration-none" href="tel:010-020-0340">123-456-758</a>
                         </li>
                         <li>
                             <i class="fa fa-envelope fa-fw"></i>
-                            <a class="text-decoration-none" href="mailto:info@company.com">info@company.com</a>
+                            <a class="text-decoration-none" href="mailto:info@company.com">ip3s@mail.com</a>
                         </li>
                     </ul>
                 </div>
 
                 <div class="col-md-4 pt-5">
-                    <h2 class="h2 text-light border-bottom pb-3 border-light">Products</h2>
+                    <h2 class="h2 text-light border-bottom pb-3 border-light">Товары</h2>
                     <ul class="list-unstyled text-light footer-link-list">
                         <li><a class="text-decoration-none" href="/shop">iPad</a></li>
                         <li><a class="text-decoration-none" href="/shop">Macbook</a></li>
@@ -163,12 +165,12 @@
                 </div>
 
                 <div class="col-md-4 pt-5">
-                    <h2 class="h2 text-light border-bottom pb-3 border-light">Further Info</h2>
+                    <h2 class="h2 text-light border-bottom pb-3 border-light">Страницы сайта</h2>
                     <ul class="list-unstyled text-light footer-link-list">
-                        <li><a class="text-decoration-none" href="/">Home</a></li>
-                        <li><a class="text-decoration-none" href="/about">About Us</a></li>
-                        <li><a class="text-decoration-none" href="/shop">Shop</a></li>
-                        <li><a class="text-decoration-none" href="/contact">Contact</a></li>
+                        <li><a class="text-decoration-none" href="/">Главная</a></li>
+                        <li><a class="text-decoration-none" href="/about">О нас</a></li>
+                        <li><a class="text-decoration-none" href="/shop">Каталог</a></li>
+                        <li><a class="text-decoration-none" href="/contact">Поддержка</a></li>
                     </ul>
                 </div>
 
@@ -194,17 +196,11 @@
                         </li>
                     </ul>
                 </div>
-                <div class="col-auto">
-                    <label class="sr-only" for="subscribeEmail">Email address</label>
-                    <div class="input-group mb-2">
-                        <input type="text" class="form-control bg-dark border-light" id="subscribeEmail" placeholder="Email address">
-                        <div class="input-group-text btn-success text-light">Subscribe</div>
-                    </div>
-                </div>
+
             </div>
         </div>
 
-        <div class="w-100 bg-black py-3">
+        <div class="w-100 py-3">
             <div class="container">
                 <div class="row pt-2">
                     <div class="col-12">

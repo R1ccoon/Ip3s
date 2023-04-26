@@ -1,6 +1,4 @@
-
-<!-- saved from url=(0106)https://www.pythonanywhere.com/user/ip3s/files/home/ip3s/.virtualenvs/venv/ip3s/templates/shop-single.html -->
-<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></head><body>{% extends "base.html" %}
+{% extends "base.html" %}
 
 {% block content %}
 
@@ -11,7 +9,7 @@
             <div class="row">
                 <div class="col-lg-5 mt-5">
                     <div class="card mb-3">
-                        <img class="card-img img-fluid" src="./shop-single_files/{{ item.images }}" alt="Card image cap" id="product-detail">
+                        <img class="card-img img-fluid" src="{{ item.images }}" alt="Card image cap" id="product-detail">
                     </div>
                 </div>
                 <!-- col end -->
@@ -52,7 +50,7 @@
 
                             <div class="row pb-3">
                                 <div class="col d-grid">
-                                    <a href="https://www.pythonanywhere.com/shop1/%7B%7B%20item.id%20%7D%7D"><button type="submit" class="btn btn-success1 btn-lg" name="submit" value="addtocard">Добавить в корзину</button></a>
+                                    <a href="/shop1/{{ item.id }}"><button type="submit" class="btn btn-success1 btn-lg" name="submit" value="addtocard">Добавить в корзину</button></a>
                                 </div>
                             </div>
 
@@ -69,15 +67,15 @@
 {% endblock %}
 
     <!-- Start Script -->
-    <script src="./shop-single_files/jquery-1.11.0.min.js.загрузка"></script>
-    <script src="./shop-single_files/jquery-migrate-1.2.1.min.js.загрузка"></script>
-    <script src="./shop-single_files/bootstrap.bundle.min.js.загрузка"></script>
-    <script src="./shop-single_files/templatemo.js.загрузка"></script>
-    <script src="./shop-single_files/custom.js.загрузка"></script>
+    <script src="assets/js/jquery-1.11.0.min.js"></script>
+    <script src="assets/js/jquery-migrate-1.2.1.min.js"></script>
+    <script src="assets/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/templatemo.js"></script>
+    <script src="assets/js/custom.js"></script>
     <!-- End Script -->
 
     <!-- Start Slider Script -->
-    <script src="./shop-single_files/slick.min.js.загрузка"></script>
+    <script src="assets/js/slick.min.js"></script>
     <script>
         $('#carousel-related-product').slick({
             infinite: true,
@@ -109,4 +107,3 @@
             ]
         });
     </script>
-</body></html>
